@@ -1,4 +1,4 @@
-package models;
+package Models;
 
 public class Pantalla {
     private int id;
@@ -46,6 +46,6 @@ public class Pantalla {
 
     @Override
     public String toString() {
-        return "Pantalla{id=" + id + ", nombre='" + nombre + "', ruta='" + ruta + "'}";
+        return "Pantalla[ruta='" + ruta + "']";
     }
 }
