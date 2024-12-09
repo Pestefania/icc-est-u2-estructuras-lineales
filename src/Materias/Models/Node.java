@@ -1,38 +1,28 @@
 package Materias.Models;
 
-public class Node {
-    private int value; // Propiedad privada que almacena el valor del nodo
-    private Node next; // Propiedad privada que almacena la referencia al siguiente nodo
 
-    // Constructor que inicializa el valor del nodo
-    public Node(int value) {
+public class Node<T> {
+    private T value;       
+    private Node<T> next;  
+
+    public Node(T value) {
         this.value = value;
-        this.next = null; // Inicialmente, el siguiente nodo es nulo
+        this.next = null;  
     }
 
-    // Getter para el valor del nodo
-    public int getValue() {
+    public T getValue() {
         return value;
     }
 
-    // Setter para el valor del nodo
-    public void setValue(int value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    // Getter para el siguiente nodo
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    // Setter para el siguiente nodo
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
-    }
-
-    // Método para representar el nodo como cadena de texto
-    @Override
-    public String toString() {
-        return "Node{value=" + value + "}";
     }
 }

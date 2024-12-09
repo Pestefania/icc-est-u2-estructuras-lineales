@@ -1,4 +1,5 @@
 
+import Controller.MenuController;
 import Materias.Queues.Queue;
 import Materias.Queues.QueueGeneric;
 import Materias.Stacks.Stack;
@@ -11,7 +12,14 @@ public class App {
         // runStack();
         // runStackGeneric();
         // runQueue();
-        runQueueGeneric();
+        //runQueueGeneric();
+        runContactManager();
+    }
+
+    public static void runContactManager() {
+        MenuController menuController = new MenuController();
+        menuController.showMenu();
+        
     }
 
     public static void runStack() {
