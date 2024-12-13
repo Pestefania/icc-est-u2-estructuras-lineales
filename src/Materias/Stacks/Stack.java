@@ -5,7 +5,7 @@ import Materias.Models.Node;
 
 public class Stack {
     private Node top; // Nodo en la cima de nuestra pila
-    private int size; 
+    private int size;
 
     // Constructor que inicializa la pila vacía
     public Stack() {
@@ -18,7 +18,7 @@ public class Stack {
         Node newNode = new Node(value);
         newNode.setNext(top);
         top = newNode;
-        size++; 
+        size++;
     }
 
     // Método que retira y retorna el elemento de la cima
@@ -28,7 +28,7 @@ public class Stack {
         }
         int value = top.getValue();
         top = top.getNext();
-        size--; 
+        size--;
         return value;
     }
 
@@ -59,7 +59,17 @@ public class Stack {
         return size;
     }
 
-    // Método para calcular el tamaño de la pila usando un contador
+    // Método para calcular el tamaño de la pila usando un contador (O(n))
+    public int calculateSize() {
+        int calculatedSize = 0;
+        Node current = top;
+        while (current != null) {
+            calculatedSize++;
+            current = current.getNext();
+        }
+        return calculatedSize;
+    }
+     // Método para calcular el tamaño de la pila usando un contador
     //Complejidad O(n)
     //public int getSize() {
         //int size = 0; 
@@ -71,3 +81,4 @@ public class Stack {
         //return size; 
     //}*/
 }
+
