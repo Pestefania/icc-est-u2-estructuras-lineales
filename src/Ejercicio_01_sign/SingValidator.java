@@ -2,7 +2,7 @@ package Ejercicio_01_sign;
 
 import Materias.Stacks.StackGeneric;
 
-public class ValidadorSignos {
+public class SingValidator {
 
     // Método para validar una cadena de signos usando StackGeneric
     public static boolean esValido(String s) {
@@ -29,3 +29,4 @@ public class ValidadorSignos {
         return stack.isEmpty();
     }
 }
+

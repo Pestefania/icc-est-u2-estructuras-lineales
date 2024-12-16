@@ -1,11 +1,10 @@
 import Controller.MenuController;
-import Ejercicio_01_sign.ValidadorSignos;
+import Ejercicio_01_sign.SingValidator;
 import Ejercicio_02_sorting.StackSorter;
 import Materias.Queues.Queue;
 import Materias.Queues.QueueGeneric;
 import Materias.Stacks.Stack;
 import Materias.Stacks.StackGeneric;
-import java.util.Scanner;
 import models.Pantalla;
 
 public class App {
@@ -22,29 +21,23 @@ public class App {
 
     // Ejercicio de validación de signos
     public static void runSignValidator() {
-        Scanner scanner = new Scanner(System.in);
-        boolean continuar = true;
-
-        while (continuar) {
-            System.out.println("Ingrese una cadena de signos para validar: ");
-            String input = scanner.nextLine();
-
-            if (ValidadorSignos.esValido(input)) {
-                System.out.println("La cadena es válida.");
-            } else {
-                System.out.println("La cadena no es válida.");
-            }
-
-            System.out.println("¿Desea ingresar otra cadena? (si/no): ");
-            String respuesta = scanner.nextLine().trim().toLowerCase();
-            if (!respuesta.equals("si")) {
-                continuar = false;
-                System.out.println("¡Gracias por usar el validador de signos!");
-            }
+        System.out.println("=== Validador de Signos ===");
+    
+        // Ejemplos predefinidos
+        String[] ejemplos = {"([]){}", "({)}"};
+        
+        // Iterar sobre cada ejemplo
+        for (int i = 0; i < ejemplos.length; i++) {
+            String input = ejemplos[i];
+            boolean resultado = SingValidator.esValido(input);
+    
+            System.out.println("Ejemplo " + (i + 1) + ":");
+            System.out.println("Input: \"" + input + "\"");
+            System.out.println("Output: " + resultado);
+            System.out.println(); // Espacio para mejor formato
         }
-
-        scanner.close(); // Cerramos el recurso adecuadamente
     }
+    
 
     // Ejercicio de ordenar un Stack
     public static void runSortStackExample() {
@@ -54,6 +47,7 @@ public class App {
         stack.push(4);
         stack.push(2);
 
+        System.out.println("=== Ordenar un Stack ===");
         System.out.println("Stack antes de ordenar:");
         stack.printStack();
 
