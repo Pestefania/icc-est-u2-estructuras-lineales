@@ -1,56 +1,31 @@
 package Ejercicio_01_sign;
 
-import java.util.Scanner;
+import Materias.Stacks.StackGeneric;
 
-public class ValidadorSignos{
+public class ValidadorSignos {
 
-    public static boolean esValido(String cadena) {
-        Stack stack = new Stack();
+    // Método para validar una cadena de signos usando StackGeneric
+    public static boolean esValido(String s) {
+        // Usamos StackGeneric con tipo Character
+        StackGeneric<Character> stack = new StackGeneric<>();
 
-        for (char caracter : cadena.toCharArray()) {
-            if (caracter == '(' || caracter == '{' || caracter == '[') {
-                stack.push(caracter);
-            } else if (caracter == ')' || caracter == '}' || caracter == ']') {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                char top = stack.pop();
-                if (!esParCorrespondiente(top, caracter)) {
-                    return false;
-                }
-            }
-        }
-        return stack.isEmpty();
-    }
-
-    private static boolean esParCorrespondiente(char apertura, char cierre) {
-        return (apertura == '(' && cierre == ')') ||
-               (apertura == '{' && cierre == '}') ||
-               (apertura == '[' && cierre == ']');
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        boolean continuar = true;
-
-        while (continuar) {
-            System.out.println("Ingrese una cadena de signos para validar: ");
-            String input = scanner.nextLine();
-
-            if (esValido(input)) {
-                System.out.println("True");
+        for (char c : s.toCharArray()) {
+            // Si es un signo de apertura, lo agregamos al stack
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
             } else {
-                System.out.println("False");
-            }
-
-            System.out.println("¿Desea ingresar otra cadena? (si/no): ");
-            String respuesta = scanner.nextLine().trim().toLowerCase();
-            if (!respuesta.equals("si")) {
-                continuar = false;
-                System.out.println("¡Gracias por usar el validador de signos!");
+                // Si es un signo de cierre, verificamos si el stack está vacío o si no coincide con el signo de apertura
+                if (stack.isEmpty()) return false;
+                char top = stack.pop();  // Obtenemos el valor del nodo superior
+                if ((c == ')' && top != '(') || 
+                    (c == '}' && top != '{') || 
+                    (c == ']' && top != '[')) {
+                    return false;
+                }
             }
         }
 
-        scanner.close();
+        // Si el stack está vacío, los signos están balanceados
+        return stack.isEmpty();
     }
 }

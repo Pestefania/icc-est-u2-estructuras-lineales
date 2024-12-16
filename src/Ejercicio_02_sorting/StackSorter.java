@@ -1,41 +1,29 @@
 package Ejercicio_02_sorting;
 
-import java.util.Stack;
+import Materias.Stacks.StackGeneric;
 
 public class StackSorter {
-    // Método para ordenar un stack
-    public void sortStack(Stack<Integer> stack) {
-        Stack<Integer> tempStack = new Stack<>(); // Pila auxiliar
+
+    // Método para ordenar un Stack de tipo Integer
+    public void sortStack(StackGeneric<Integer> stack) {
+        StackGeneric<Integer> sortedStack = new StackGeneric<>();
 
         while (!stack.isEmpty()) {
-            // Extraemos el elemento superior de la pila original
-            int temp = stack.pop();
+            // Sacamos el primer elemento de la pila original
+            int current = stack.pop();
 
-            // Movemos elementos mayores que temp de tempStack a stack
-            while (!tempStack.isEmpty() && tempStack.peek() > temp) {
-                stack.push(tempStack.pop());
+            // Mover elementos de sortedStack al stack original si son mayores que el elemento actual
+            while (!sortedStack.isEmpty() && sortedStack.peek() > current) {
+                stack.push(sortedStack.pop());
             }
 
-            // Colocamos temp en la posición correcta dentro de tempStack
-            tempStack.push(temp);
+            // Colocamos el elemento actual en el sortedStack
+            sortedStack.push(current);
         }
 
-        // Transferimos los elementos de tempStack de vuelta a stack
-        while (!tempStack.isEmpty()) {
-            stack.push(tempStack.pop());
+        // Mover los elementos de sortedStack de vuelta a la pila original para que quede en el orden correcto
+        while (!sortedStack.isEmpty()) {
+            stack.push(sortedStack.pop());
         }
-    }
-
-    // Método para formatear la pila como una cadena con el formato "(tope) 1->2->4->5"
-    public String formatStack(Stack<Integer> stack) {
-        StringBuilder result = new StringBuilder("(tope) ");
-        for (int i = stack.size() - 1; i >= 0; i--) {
-            result.append(stack.get(i));
-            if (i > 0) {
-                result.append("->");
-            }
-        }
-        return result.toString();
     }
 }
-
