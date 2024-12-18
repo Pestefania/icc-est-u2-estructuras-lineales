@@ -1,46 +1,62 @@
-# Proyecto de Ejercicios: Validación de Signos y Ordenación de Stack
+# Proyecto de Ejercicios: Validación de Signos y Ordenación de Stacks  
 
-## Descripción
-Este proyecto contiene dos ejercicios importantes:
+## **Descripción**  
+Este proyecto incluye dos ejercicios fundamentales para comprender el uso de pilas (`Stack`) y algoritmos asociados:  
 
-1. *Ejercicio 1: Validación de Signos*  
-   El objetivo de este ejercicio es implementar un algoritmo que determine si una cadena de caracteres, que solo contiene los signos (), {}, [], es válida. La cadena es válida si los corchetes están bien balanceados y en el orden correcto.
+1. **Ejercicio 1: Validación de Signos**  
+   - Implementa un algoritmo para validar si una cadena de caracteres compuesta por los signos `()`, `{}`, `[]` está balanceada y en el orden correcto.  
 
-2. *Ejercicio 2: Ordenación de un Stack*  
-   Este ejercicio implementa un algoritmo que ordena un Stack de enteros, donde el elemento más pequeño se coloca en la parte superior del Stack. Para ello, se utiliza otro Stack auxiliar.
+2. **Ejercicio 2: Ordenación de un Stack**  
+   - Desarrolla un algoritmo que ordena un `Stack` de enteros, utilizando un `Stack` auxiliar para lograr que el menor elemento quede en la parte superior.  
 
-## Estructura del Proyecto
+---
 
-- *SignValidator*: Clase encargada de validar la correcta apertura y cierre de los signos.
-- *StackSorter*: Clase encargada de ordenar un Stack utilizando otro Stack adicional.
-- *NodeGeneric*: Clase que define un nodo genérico utilizado en la implementación de un Stack genérico.
-- *StackGeneric*: Clase que define un Stack genérico.
-- *App*: Clase principal que contiene los métodos runSignValidator y runSortStackExample para ejecutar los ejercicios.
+## **Estructura del Proyecto**  
 
-## Instrucciones
+1. **`SignValidator`**: Clase responsable de validar la correcta apertura y cierre de los signos.  
+2. **`StackSorter`**: Clase que implementa el algoritmo para ordenar un `Stack` de enteros utilizando otro `Stack` adicional.  
+3. **`NodeGeneric`**: Clase que define un nodo genérico, base para la implementación del `StackGeneric`.  
+4. **`StackGeneric`**: Clase que define una pila genérica con operaciones básicas como `push`, `pop`, `peek` y `isEmpty`.  
+5. **`App`**: Clase principal que contiene los métodos `runSignValidator` y `runSortStackExample` para ejecutar y demostrar ambos ejercicios.  
 
-### Ejercicio 1: Validación de Signos
+---
 
-El programa valida si una cadena de caracteres con los signos (), {}, [] está correctamente balanceada.
+## **Ejercicio 1: Validación de Signos**  
 
-#### Funcionamiento:
-1. El usuario ingresa una cadena de signos, por ejemplo: ([]){}.
-2. El algoritmo determina si la cadena está balanceada y en el orden correcto.
-3. Si la cadena es válida, se muestra el mensaje: "La cadena es válida."
-4. Si no lo es, se muestra el mensaje: "La cadena no es válida."
+### **Descripción**  
+Este programa verifica si una cadena de signos `()`, `{}`, `[]` está correctamente balanceada, considerando las reglas de apertura y cierre en el orden adecuado.  
 
-### Ejercicio 2: Ordenación de un Stack
+### **Funcionamiento**  
+1. El usuario ingresa una cadena de signos.  
+2. El algoritmo procesa cada carácter:  
+   - Agrega los signos de apertura a la pila.  
+   - Verifica que cada signo de cierre coincida con el superior de la pila.  
+3. Si al final la pila está vacía, la cadena está correctamente balanceada.  
 
-Este ejercicio implementa un algoritmo que ordena un Stack de enteros, donde el elemento más pequeño se coloca en la parte superior del Stack. Para ello, se utiliza otro Stack auxiliar.
+### **Resultados Esperados**  
+- Si la cadena es válida, el programa mostrará: `"La cadena es válida."`  
+- Si no lo es, el programa mostrará: `"La cadena no es válida."`  
 
-#### Funcionamiento:
-1. Se toma un Stack de enteros con elementos desordenados.
-2. El algoritmo ordena los elementos utilizando otro Stack auxiliar.
-3. El Stack resultante tiene los elementos ordenados de menor a mayor, con el menor en la parte superior.
+## **Ejercicio 2: Ordenación de un Stack**
 
-#### Descripción del Funcionamiento Ejercicio 2: Ordenación de un Stack:
-El proceso de ordenación funciona de la siguiente manera:
+### **Descripción**  
+El objetivo de este ejercicio es implementar un algoritmo que ordene una pila (`Stack`) de números enteros en orden ascendente, utilizando únicamente otra pila (`Stack`) auxiliar. Al final del proceso, el menor elemento estará en la parte superior de la pila original.
 
-- Se extraen los elementos del Stack original uno por uno.
-- Cada elemento extraído se coloca en el Stack auxiliar de manera que este siempre tiene los elementos ordenados de menor a mayor, con el elemento más pequeño en la parte superior.
-- Para colocar cada nuevo elemento, el algoritmo compara el nuevo elemento con el que está en la parte superior del Stack auxiliar. Si el nuevo elemento es más grande, se inserta directamente en la parte superior del Stack auxiliar. Si es más pequeño, los elementos más grandes se mueven temporalmente al Stack original hasta que el nuevo elemento encuentra su lugar.
+### **Funcionamiento del Algoritmo**  
+El algoritmo sigue estos pasos principales:
+
+1. **Extraer Elementos de la Pila Original**:  
+   Se toman los elementos uno por uno desde la pila original (`stack`).
+
+2. **Comparar e Insertar en el `Stack` Auxiliar**:  
+   Cada elemento extraído se compara con el elemento en la parte superior del `Stack` auxiliar (`sortedStack`).  
+   Si el elemento actual es menor que el superior del `sortedStack`, se mueven temporalmente los elementos mayores de vuelta a la pila original.  
+   Se inserta el elemento en la posición correcta dentro del `sortedStack` para mantener su orden.
+
+3. **Reensamblar la Pila Original**:  
+   Una vez que todos los elementos están en el `Stack` auxiliar en orden ascendente, se transfieren de vuelta a la pila original.
+
+### **Ejemplo de Funcionamiento**  
+Dado un `Stack` inicial con los elementos:  
+```text
+[4, 2, 3, 1]
